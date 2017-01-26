@@ -148,7 +148,7 @@ check_minimal2(mybit t, int k, mybits &e) {
 //------------------------------------------------------------------------
 void
 search(int k, mybit t, mybits &e, mybits &r) {
-  if (!check_minimal2(t, k, e))return;
+  //if (!check_minimal2(t, k, e))return;
   if (k == e.size()) {
     r.push_back(t);
     return;
@@ -159,7 +159,9 @@ search(int k, mybit t, mybits &e, mybits &r) {
     mybit v = e[k];
     while (v) {
       mybit t2 = v & -v;
-      search(k + 1, t | t2, e, r);
+      if (check_minimal2(t|t2, k+1, e)){
+        search(k + 1, t | t2, e, r);
+      }
       v = v ^ t2;
     }
   }

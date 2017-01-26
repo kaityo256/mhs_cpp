@@ -40,6 +40,6 @@ $MAX = ARGV[0].to_i
 size= ARGV[1].to_i
 num = ARGV[2].to_i
 make_array(size,num).each do |v|
-  puts v.to_b
+  puts v.to_a
 end
 
