@@ -148,7 +148,6 @@ check_minimal2(mybit t, int k, mybits &e) {
 //------------------------------------------------------------------------
 void
 search(int k, mybit t, mybits &e, mybits &r) {
-  //if (!check_minimal2(t, k, e))return;
   if (k == e.size()) {
     r.push_back(t);
     return;
@@ -183,7 +182,6 @@ main(int argc, char **argv) {
   }
   mybits r;
   search(0, 0, e, r);
-  //show(r);
   if (bits) {
     show_bits(r);
   } else {
