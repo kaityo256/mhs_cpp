@@ -59,15 +59,13 @@ We prepare a ruby script `gen.rb` for input file generator.
 - `n` n of max bits are on.
 - `num` A number of input sets
 
-For example,
+For example, the following example produces 4 sets of 8-bit arrays in which 3 of 8 bits are set.
 
-   $ ruby gen.rb 8 3 4
-   01101000
-   10011000
-   01010001
-   10010010
-
-It produces 4 sets of 8-bit arrays in which 3 of 8 bits are set.
+    $ ruby gen.rb 8 3 4
+    01101000
+    10011000
+    01010001
+    10010010
 
 ## Reference
 
