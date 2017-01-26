@@ -128,6 +128,7 @@ check_minimal(mybit t, int k, mybits &e) {
     bool flag = true;
     for (int i = 0; i < k; i++) {
       flag &= ((e[i] & t3) != 0);
+      if(!flag)break;
     }
     if (flag)return false;
     v = v ^ t2;
