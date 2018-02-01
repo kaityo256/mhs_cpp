@@ -60,7 +60,7 @@ b2a(mybit t) {
 mybit
 s2b(std::string str) {
   mybit t = 0;
-  for (int i = 0; i < str.length(); i++) {
+  for (unsigned int i = 0; i < str.length(); i++) {
     t |= ((str[i] - '0') << (str.length() - i - 1));
   }
   return t;
@@ -98,7 +98,7 @@ check_file_is_bits(std::string filename) {
   std::string line;
   getline(ifs, line);
   if (line.length() == 1) return false;
-  for (int i = 0; i < line.length(); i++) {
+  for (unsigned int i = 0; i < line.length(); i++) {
     if (line[i] != '0' && line[i] != '1') return false;
   }
   max_size = line.length();
@@ -107,14 +107,14 @@ check_file_is_bits(std::string filename) {
 //------------------------------------------------------------------------
 void
 show(mybits &v) {
-  for (int i = 0; i < v.size(); i++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
     std::cout << b2a(v[i]) << std::endl;
   }
 }
 //------------------------------------------------------------------------
 void
 show_bits(mybits &v) {
-  for (int i = 0; i < v.size(); i++) {
+  for (unsigned int i = 0; i < v.size(); i++) {
     std::cout << b2s(v[i]) << std::endl;
   }
 }
@@ -128,7 +128,7 @@ check_minimal(mybit t, int k, mybits &e) {
     bool flag = true;
     for (int i = 0; i < k; i++) {
       flag &= ((e[i] & t3) != 0);
-      if(!flag)break;
+      if (!flag)break;
     }
     if (flag)return false;
     v = v ^ t2;
@@ -148,7 +148,7 @@ check_minimal2(mybit t, int k, mybits &e) {
 }
 //------------------------------------------------------------------------
 void
-search(int k, mybit t, mybits &e, mybits &r) {
+search(unsigned int k, mybit t, mybits &e, mybits &r) {
   if (k == e.size()) {
     r.push_back(t);
     return;
@@ -159,7 +159,7 @@ search(int k, mybit t, mybits &e, mybits &r) {
     mybit v = e[k];
     while (v) {
       mybit t2 = v & -v;
-      if (check_minimal2(t|t2, k+1, e)){
+      if (check_minimal2(t | t2, k + 1, e)) {
         search(k + 1, t | t2, e, r);
       }
       v = v ^ t2;
